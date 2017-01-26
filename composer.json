@@ -1,0 +1,20 @@
+{
+  "name": "loborec/php-utils",
+  "description": "",
+  "keywords": ["php", "functions"],
+  "type": "library",
+  "homepage": "https://github.com/loborec/php-utils",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dubravko Loborec",
+      "homepage": "http://www.DubravkoLoborec.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0"
+  },
+   "autoload": {
+    "files": ["utils.php"]
+  }
+}
