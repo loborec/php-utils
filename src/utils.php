@@ -1,4 +1,7 @@
 <?php
+
+    defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
+
     /**
     * This file contains the system unit.
     *
@@ -325,50 +328,7 @@
         file_put_contents($fileName,$result,FILE_APPEND);   
     } 
 
-    /**
-    * Function array_split splits the array into the pieces.
-    * 
-    * @param array $array
-    * @param integer $pieces
-    * @return array new array
-    */
-    function array_split($array, $pieces=2){
-        if ($pieces < 2) 
-            return array($array); 
-        $newCount = ceil(count($array)/$pieces); 
-        $a = array_slice($array, 0, $newCount); 
-        $b = array_split(array_slice($array, $newCount), $pieces-1); 
-        return array_merge(array($a),$b); 
-    } 
-
-    /**
-    * Function array_chunk_vertical splits the array into the columns.
-    * 
-    * @param mixed $data
-    * @param mixed $columns
-    * @return array new array
-    */
-    function array_chunk_vertical($data, $columns) {
-        $n = count($data) ;
-        $per_column = floor($n / $columns) ;
-        $rest = $n % $columns ;
-
-        // The map
-        $per_columns = array( ) ;
-        for ( $i = 0 ; $i < $columns ; $i++ ) {
-            $per_columns[$i] = $per_column + ($i < $rest ? 1 : 0) ;
-        }
-
-        $tabular = array( ) ;
-        foreach ( $per_columns as $rows ) {
-            for ( $i = 0 ; $i < $rows ; $i++ ) {
-                $tabular[$i][ ] = array_shift($data) ;
-            }
-        }
-
-        return $tabular ;
-    }
-
+   
     /**
     * Function now is shortcut to PHP function time.
     * @return timestamp
@@ -494,36 +454,6 @@
     function mysql_date_to_timestamp($mysql_date){
         list($year, $month, $day) = explode('-', $mysql_date);
         return mktime(0, 0, 0, $month, $day, $year); 
-    }
-
-    /**
-    * Function time_elapsed_string creates the string containing textual representation of the period.
-    * 
-    * @param mixed $ptime
-    * @return string
-    */
-    function time_elapsed_string($ptime) {
-        $etime = time() - $ptime;
-
-        if ($etime < 1) {
-            return '0 seconds';
-        }
-
-        $a = array( 12 * 30 * 24 * 60 * 60  =>  'year',
-            30 * 24 * 60 * 60       =>  'month',
-            24 * 60 * 60            =>  'day',
-            60 * 60                 =>  'hour',
-            60                      =>  'minute',
-            1                       =>  'second'
-        );
-
-        foreach ($a as $secs => $str) {
-            $d = $etime / $secs;
-            if ($d >= 1) {
-                $r = round($d);
-                return $r . ' ' . $str . ($r > 1 ? 's' : '');
-            }
-        }
     }
 
     /**
