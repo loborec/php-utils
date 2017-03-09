@@ -1,6 +1,5 @@
 <?php
 
-    defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
     /**
     * This file contains the system unit.
