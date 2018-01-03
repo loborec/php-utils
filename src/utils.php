@@ -324,7 +324,7 @@
         $result .= ob_get_contents();
         $result .="\n";
         ob_get_clean();  
-        file_put_contents($fileName,$result,FILE_APPEND);   
+        file_put_contents($fileName, $result, FILE_APPEND);   
     } 
 
    
@@ -556,3 +556,10 @@
         else
             return $dir.DIRECTORY_SEPARATOR;   
     }
+    
+    
+         function iff($tst,$cmp,$bad) {
+            return(($tst == $cmp)?$cmp:$bad);
+        }
+        
+        
